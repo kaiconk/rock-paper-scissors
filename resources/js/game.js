@@ -8,7 +8,6 @@
 
 function getRandomNumber(min, max) { 
 
-    console.log(Math.floor(Math.random() * (max - min + 1)) + min);
     return Math.floor(Math.random() * (max - min + 1)) + min;
     
 } 
@@ -19,10 +18,6 @@ function getRockPaperOrScissors() {
     const MAX_VALUE = 3;
 
     let randomNumber = getRandomNumber(MIN_VALUE, MAX_VALUE);
-
-    return randomNumber;
-
-    /*
 
     switch(randomNumber) {
         case 1:
@@ -40,9 +35,14 @@ function getRockPaperOrScissors() {
         default:
             return "Error";
     }
-    */
+    
 }
 
+console.log(getRockPaperOrScissors());
+console.log(getRockPaperOrScissors());
+console.log(getRockPaperOrScissors());
+console.log(getRockPaperOrScissors());
+console.log(getRockPaperOrScissors());
 console.log(getRockPaperOrScissors());
 
 
