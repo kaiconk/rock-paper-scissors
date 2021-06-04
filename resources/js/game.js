@@ -1,15 +1,28 @@
-window.onload = init;
+//window.onload = init();
 
-function init() {
-    console.log(getRockPaperOrScissors);
-}
+//function init() {
+ //   console.log(getRockPaperOrScissors);
+// }
 
-// document.getElementById("myButton").addEventListener('click', getRockPaperOrScissors());
+//document.getElementById("myButton").addEventListener('click', getRockPaperOrScissors());
 
+function getRandomNumber(min, max) { 
+
+    console.log(Math.floor(Math.random() * (max - min + 1)) + min);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+    
+} 
 function getRockPaperOrScissors() {
 
     // Generate a randon number between 1-3
-    const randomNumber = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+    const MIN_VALUE = 1;
+    const MAX_VALUE = 3;
+
+    let randomNumber = getRandomNumber(MIN_VALUE, MAX_VALUE);
+
+    return randomNumber;
+
+    /*
 
     switch(randomNumber) {
         case 1:
@@ -27,6 +40,9 @@ function getRockPaperOrScissors() {
         default:
             return "Error";
     }
+    */
 }
+
+console.log(getRockPaperOrScissors());
 
 
