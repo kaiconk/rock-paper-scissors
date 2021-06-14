@@ -1,16 +1,8 @@
-//window.onload = init();
-
-//function init() {
- //   console.log(getRockPaperOrScissors);
-// }
-
-//document.getElementById("myButton").addEventListener('click', getRockPaperOrScissors());
 
 function getRandomNumber(min, max) { 
-
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-    
+    return Math.floor(Math.random() * (max - min + 1)) + min;   
 } 
+
 function computerPlay() {
 
     const MIN_VALUE = 1;
@@ -35,8 +27,7 @@ function computerPlay() {
             // If randomNumber is anything else, return 'ERROR' 
         default:
             return "ERROR";
-    }
-    
+    }   
 }
 
 function selectionValid(selection) {
@@ -70,53 +61,52 @@ function playRound(playerSelection, computerSelection) {
     const computer = computerSelection.toUpperCase(); 
         
     // Return if player won or lost against computer
+
     // Player's Paper beats Computer's Rock
     if (player === 'PAPER' && computer === 'ROCK') {
-        playerWins = playerWins + 1;
+        playerWins += 1;
         console.log("You win! Paper beats Rock!");
     }
     // Computer's Scissors beats Player's Paper
     else if (player === 'PAPER' && computer === 'SCISSORS') {
-        computerWins = computerWins + 1;
+        computerWins += 1;
         console.log("You lose! Scissors beats Paper!");
     }
     // Paper and paper is a tie
     else if (player === 'PAPER' && computer === 'PAPER') {
-        tiedGames = tiedGames + 1;
+        tiedGames += 1;
         console.log("You tied! Paper ties with Paper!");
     }
     // Player's Rock beats Computer's Scissors
     else if (player === 'ROCK' && computer === 'SCISSORS') {
-        playerWins = playerWins + 1;
+        playerWins += 1;
         console.log("You won! Rock beats Scissors!");
     }
     // Computer's Paper beats Player's Rock
     else if (player === 'ROCK' && computer === 'PAPER') {
-        computerWins = computerWins + 1;
+        computerWins += 1;
         console.log("You lose! Paper beats rock!");
     }
     // Rock ties with Rock
     else if (player === 'ROCK' && computer === 'ROCK') {
-        tiedGames = tiedGames + 1;
+        tiedGames += 1;
         console.log("You tied! Rock ties with Rock!");
     }
     // Player's Scissors beats Computer's Paper
     else if (player === 'SCISSORS' && computer === 'PAPER') {
-        playerWins = playerWins + 1;
+        playerWins += 1;
         console.log("You won! Scissors beats Paper!");
     }
     // Computer's Rock beats Player's Scissors
     else if (player === 'SCISSORS' && computer === 'ROCK') {
-        computerWins = computerWins + 1;
+        computerWins += 1;
         console.log("You lose! Rock beats Scissors!");
     }
     // Scissors ties with Scissors
     else if (player === 'SCISSORS' && computer === 'SCISSORS') {
-        tiedGames = tiedGames + 1;
+        tiedGames += 1;
         console.log("You tied! Scissors ties with Scissors!");
     }
-    
-    return true;
 }
 
 function game() {
@@ -125,41 +115,37 @@ function game() {
     let playerSelection, computerSelection = '';
     let isValidSelection = false;
 
-     // If player entered an invalid selection, then return Error and don't count as a round (don't enter loop)
-    // if (!selectionValid(playerSelection)) {
-        // return "Player entered an invalid selection. Please try again!"
-      //  return false;
-    }
-    // If computer selection has errors for some reason, then return Computer Error and exit fuction
-  //  if (!selectionValid(computerSelection)) {
-        // return "Computer error. Will try again!"
-    //    return false;
-    //
-
     // Let human play against computer 5 times
-    for(let x = 1; x <= ROUNDS; x++) {
+    for(let x = 0; x < ROUNDS; x++) {
         
+        // keep prompting user until get valid selection
         do {
             // Get player selection from prompt input
             playerSelection = prompt("Please enter Rock, Paper, or Scissors.");
             // Check whether input was valid
             isValidSelection = selectionValid(playerSelection);
-          // Prompt user until get valid selection
-        } while (isValidSelection)
+            if (!isValidSelection) {
+                alert("Invalid input. Try again!");
+            }  
+        } while (!isValidSelection)
 
         // Get computer's random selection
         computerSelection = computerPlay();
-        alert(computerSelection);
-        alert(playerSelection);
-        alert(x);
 
+        // Compare user and computer selections to return winner
+        // Keep tally of total player wins and computer wins count
         playRound(playerSelection, computerSelection);
-        //alert(x);
+        
     }
 
     // Output player and computer score
     console.log("Player score: " + parseInt(playerWins));
     console.log("Computer score: " + parseInt(computerWins));
+
+    alert("Player score: " + parseInt(playerWins));
+    alert("Computer score: " + parseInt(computerWins));
+
+
     // Output number if tied games (if any)
     if (tiedGames > 0) {
         console.log("Tied Games: " + parseInt(tiedGames));
@@ -175,19 +161,17 @@ function game() {
     else if (computerWins === playerWins) {
         console.log("There was a " + parseInt(computerWins) + " - " + parseInt(playerWins) + " tie!");
     }
+
+    alert("See console tab for score!");
 }
 
-//const playerSelection = 'paper';
-//const computerSelection = computerPlay();
 
-// global variables 
-let roundCount;
 // keep track of computer wins, player wins, and tied games
 let computerWins = 0;
 let playerWins = 0;
 let tiedGames = 0;
 
-// console.log('Play Round > ' + playRound(playerSelection, computerSelection));
+// PLAY GAME HERE!
 console.log(game());
 
 
